@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,12 +29,14 @@ namespace MetaWeather.TestConsole {
             await host.StartAsync();
 
             var weather = Services.GetRequiredService<MetaWeatherClient>();
-            var location = await weather.GetLocationByName("St Petersburg");
+            var moscow = await weather.GetLocation("Moscow");
+            var loc = await weather.GetLocation((moscow[0].Location));
 
             Console.WriteLine("Stopping");
             Console.ReadLine();
             await host.StopAsync();
-
         }
+
+
     }
 }

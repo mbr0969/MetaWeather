@@ -11,18 +11,27 @@ namespace MetaWeather.Models
     public class WeatherLocation {
         //[{"title":"St Petersburg","location_type":"City","woeid":2123260,"latt_long":"59.932739,30.306721"}]
 
-        [JsonPropertyName("woeid")] public int Id { get; set; }
+        [JsonPropertyName("woeid")] 
+        public int Id { get; set; }
 
-        [JsonPropertyName("title")] public string Title { get; set; }
+        [JsonPropertyName("title")] 
+        public string Title { get; set; }
 
         [JsonPropertyName("location_type")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public LocationType Location_type { get; set; }
+        public LocationType Type { get; set; }
 
         [JsonPropertyName("latt_long")]
         [JsonConverter(typeof(JsonCoordinateConverter))]
-        public (double Latitude, double Longitude) Latt_long { get; set; }
+        public (double Latitude, double Longitude) Location { get; set; }
 
-        [JsonPropertyName("distance")] public int Distance { get; set; }
+        [JsonPropertyName("distance")] 
+        public int Distance { get; set; }
+
+        public override string ToString() {
+            return $"[{Id}]{Title}({Type}):({Location}) ({Distance})";
+        }
+
+
     }
 }
