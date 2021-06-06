@@ -29,8 +29,10 @@ namespace MetaWeather.TestConsole {
             await host.StartAsync();
 
             var weather = Services.GetRequiredService<MetaWeatherClient>();
-            var moscow = await weather.GetLocation("Moscow");
-            var loc = await weather.GetLocation((moscow[0].Location));
+            var moscow = await weather.GetLocation("St Petersburg");
+         //   var loc = await weather.GetLocation((moscow[0].Location));
+
+            var info = await weather.GetInfo(moscow[0].Id);
 
             Console.WriteLine("Stopping");
             Console.ReadLine();

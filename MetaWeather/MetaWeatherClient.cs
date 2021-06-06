@@ -23,16 +23,17 @@ namespace MetaWeather {
 
         public async Task<WeatherLocation[]> GetLocation((double Latitude, double Longitude) Location, CancellationToken cancel = default) {
 
-            var request = $"/api/location/search/?lattlong={Location.Latitude.ToString(CultureInfo.InvariantCulture)},{Location.Longitude.ToString(CultureInfo.InvariantCulture)}";
-
-
-            var l = await _client.GetFromJsonAsync<WeatherLocation[]>($"/api/location/search/?lattlong={Location.Latitude.ToString(CultureInfo.InvariantCulture)},{Location.Longitude.ToString(CultureInfo.InvariantCulture)}"
+            return  await _client.GetFromJsonAsync<WeatherLocation[]>($"/api/location/search/?lattlong={Location.Latitude.ToString(CultureInfo.InvariantCulture)},{Location.Longitude.ToString(CultureInfo.InvariantCulture)}"
                     , cancel).ConfigureAwait(false);
-
-            return l;
-
-
         }
 
+
+
+        public async Task<LocationInfo> GetInfo(int woeId, CancellationToken cancel = default) {
+            ///api/location/44418/
+
+            return await _client.GetFromJsonAsync<LocationInfo>($"/api/location/{woeId.ToString(CultureInfo.InvariantCulture)}", cancel).ConfigureAwait(false);
+
+        }
     }  
 }
