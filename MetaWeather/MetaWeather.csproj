@@ -1,8 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>BorzovMetaWeather.snk</AssemblyOriginatorKeyFile>
+    <Authors>mbr0969@gmail.com</Authors>
+    <Product>Borzov &amp; Co</Product>
+    <Description>Клиент погоды</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/mbr0969/MetaWeather.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/mbr0969/MetaWeather</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Weather</PackageTags>
+    <Version>1.0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
