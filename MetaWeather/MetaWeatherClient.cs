@@ -31,9 +31,10 @@ namespace MetaWeather {
             return await _client.GetFromJsonAsync<LocationInfo>($"/api/location/{woeId.ToString(CultureInfo.InvariantCulture)}", cancel).ConfigureAwait(false);
 
         }
+        public  Task<LocationInfo> GetInfo(WeatherLocation location, CancellationToken cancel = default) => GetInfo(location.Id, cancel);
 
-        public async Task<LocationInfo> GetInfo(WeatherLocation location, CancellationToken cancel = default) {
-            return await GetInfo(location.Id, cancel);
+        public async Task<WeatherInfo[]> GetWeater(int woeid, DateTime date, CancellationToken cancel = default) {
+            return await _client.GetFromJsonAsync<WeatherInfo[]>($"/api/location/{woeid}/{date:yyyy}/{date:MM}/{date:dd}", cancel).ConfigureAwait(false);
         }
     }  
 }
